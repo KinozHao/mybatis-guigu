@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+    <insert id="insertUser">
+        insert into springframe.mybatis_user values(1002,'admin2','1233452',23,'男','123@qq.com');
+    </insert>
+</mapper>
