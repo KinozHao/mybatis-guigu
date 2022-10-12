@@ -1,4 +1,6 @@
+import com.entity.User;
 import com.mapper.UserMapper;
+import com.util.MybatisUtils;
 import lombok.SneakyThrows;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author kinoz
@@ -16,7 +19,7 @@ import java.io.InputStream;
 public class FirstTest {
     @SneakyThrows
     @Test
-    public void Test1(){
+    public void NormalTest(){
         //加载核心配置文件
         InputStream resource = Resources.getResourceAsStream("mybatis_config.xml");
         //获取SqlSessionFactoryBuilder
@@ -28,9 +31,18 @@ public class FirstTest {
         //获取mapper接口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //测试功能
-        int result = mapper.insertUser();
+        int result = mapper.updateUser();
         //通过sqlSession提交事务
         sqlSession.commit();
         System.out.println("result:"+result);
+    }
+    @Test
+    public void UtilsTest(){
+        SqlSession sqlSession = MybatisUtils.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> users = mapper.allUsers();
+        sqlSession.commit();
+        MybatisUtils.closeSession(sqlSession);
+        users.forEach(System.out::println);
     }
 }

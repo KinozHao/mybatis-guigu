@@ -4,6 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.UserMapper">
     <insert id="insertUser">
-        insert into springframe.mybatis_user values(1002,'admin2','1233452',23,'男','123@qq.com');
+        insert into mybatisframe.user values(1006,'admin6','1233452',23,'女','123@qq.com');
     </insert>
+    <delete id="dropUser">
+        delete from mybatisframe.user where id = 1006;
+    </delete>
+    <update id="updateUser">
+        update mybatisframe.user set `username` = '谭嘉庆',sex = '蓝'where id = 1002;
+    </update>
+    <select id="allUsers" resultType="com.entity.User">
+        select * from mybatisframe.user;
+    </select>
 </mapper>
