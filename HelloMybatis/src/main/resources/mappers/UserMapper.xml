@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.UserMapper">
     <insert id="insertUser">
-        insert into mybatisframe.user values(1006,'admin6','1233452',23,'女','123@qq.com');
+        insert into mybatisframe.user values(1005,'姬菲微','1233452',23,'女','123@qq.com');
     </insert>
     <delete id="dropUser">
         delete from mybatisframe.user where id = 1006;
@@ -14,5 +14,8 @@
     </update>
     <select id="allUsers" resultType="com.entity.User">
         select * from mybatisframe.user;
+    </select>
+    <select id="findUserById" parameterType="int" resultType="com.entity.User">
+        select * from mybatisframe.user where id = #{id}
     </select>
 </mapper>

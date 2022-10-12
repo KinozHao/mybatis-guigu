@@ -26,4 +26,7 @@ public interface UserMapper {
 
     //获取全部用户
     List<User> allUsers();
+
+    //根据id获取用户信息
+    User findUserById(int id);
 }

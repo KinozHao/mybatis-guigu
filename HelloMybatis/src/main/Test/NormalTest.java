@@ -1,6 +1,4 @@
-import com.entity.User;
 import com.mapper.UserMapper;
-import com.util.MybatisUtils;
 import lombok.SneakyThrows;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,17 +7,16 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * @author kinoz
- * @Date 2022/10/11 22:47
+ * @Date 2022/10/12 15:24
  * @apiNote
  */
-public class FirstTest {
+public class NormalTest {
     @SneakyThrows
     @Test
-    public void NormalTest(){
+    public void insertUser(){
         //加载核心配置文件
         InputStream resource = Resources.getResourceAsStream("mybatis_config.xml");
         //获取SqlSessionFactoryBuilder
@@ -31,18 +28,9 @@ public class FirstTest {
         //获取mapper接口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //测试功能
-        int result = mapper.updateUser();
+        int line = mapper.insertUser();
         //通过sqlSession提交事务
         sqlSession.commit();
-        System.out.println("result:"+result);
-    }
-    @Test
-    public void UtilsTest(){
-        SqlSession sqlSession = MybatisUtils.openSession();
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        List<User> users = mapper.allUsers();
-        sqlSession.commit();
-        MybatisUtils.closeSession(sqlSession);
-        users.forEach(System.out::println);
+        System.out.println("受影响行数:"+line);
     }
 }

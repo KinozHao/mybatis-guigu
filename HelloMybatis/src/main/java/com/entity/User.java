@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * @author kinoz
  * @Date 2022/10/11 22:27
- * @apiNote
+ * @apiNote 实体类和数据库进行ORM
  */
 @Data
 @AllArgsConstructor
