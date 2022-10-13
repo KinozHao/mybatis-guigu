@@ -4,18 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.UserMapper">
     <insert id="insertUser">
-        insert into mybatisframe.user values(1005,'姬菲微','1233452',23,'女','123@qq.com');
+        insert into mybatisframe.user values(1006,'王菲','wangfei123',39,'女','wangfei@qq.com');
     </insert>
     <delete id="dropUser">
         delete from mybatisframe.user where id = 1006;
     </delete>
     <update id="updateUser">
-        update mybatisframe.user set `username` = '谭嘉庆',sex = '蓝'where id = 1002;
+        update mybatisframe.user set `username` = '谭嘉庆',sex = '男',email ='tanjiaqing@qq.com'where id = 1002;
     </update>
-    <select id="allUsers" resultType="com.entity.User">
+
+    <!--resultType:指定对应实体类对象
+    查询功能必须设置resultType(默认映射关系)或resultMap(自定义映射关系)-->
+    <!--resultType直接使用别名-->
+    <select id="allUser" resultType="User">
         select * from mybatisframe.user;
     </select>
-    <select id="findUserById" parameterType="int" resultType="com.entity.User">
+    <select id="findUserById" parameterType="int" resultType="User">
         select * from mybatisframe.user where id = #{id}
     </select>
 </mapper>

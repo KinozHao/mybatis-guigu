@@ -40,6 +40,10 @@ public class MybatisUtils {
     public static SqlSession openSession(){
         return sqlSessionFactory.openSession();
     }
+    //提供自动开启事务选项
+    public static SqlSession openSession(boolean autoCommit){
+        return sqlSessionFactory.openSession(autoCommit);
+    }
 
     /**
      * 关闭SqlSession的方法；
