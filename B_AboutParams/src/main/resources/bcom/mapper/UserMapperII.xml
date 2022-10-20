@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bcom.mapper.UserMapperII">
+
+    <insert id="insertUser">
+        insert into mybatisframe.user values(1033,'admin33','1233452',23,'男','123@qq.com');
+    </insert>
+    <delete id="delUser">
+        delete from mybatisframe.user where id = 1033;
+    </delete>
+</mapper>

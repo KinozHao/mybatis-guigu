@@ -16,10 +16,10 @@
     <!--resultType:指定对应实体类对象
     查询功能必须设置resultType(默认映射关系)或resultMap(自定义映射关系)-->
     <!--resultType直接使用别名-->
-    <select id="allUser" resultType="User">
+    <select id="allUser" resultType="com.entity.User">
         select * from mybatisframe.user;
     </select>
-    <select id="findUserById" parameterType="int" resultType="User">
-        select * from mybatisframe.user where id = #{id}
+    <select id="findUserById" resultType="User">
+        select * from mybatisframe.user where id = 1002;
     </select>
 </mapper>

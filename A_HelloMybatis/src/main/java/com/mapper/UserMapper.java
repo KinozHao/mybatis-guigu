@@ -28,5 +28,5 @@ public interface UserMapper {
     List<User> allUser();
 
     //根据id获取用户信息
-    User findUserById(int id);
+    User findUserById();
 }

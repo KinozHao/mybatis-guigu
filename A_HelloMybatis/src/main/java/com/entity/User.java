@@ -13,7 +13,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class User {
     private Integer id;
     private String username;
@@ -21,4 +20,16 @@ public class User {
     private Integer age;
     private String sex;
     private String email;
+
+    @Override
+    public String toString() {
+        return "用户信息:{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

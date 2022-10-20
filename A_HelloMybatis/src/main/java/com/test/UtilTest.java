@@ -34,7 +34,7 @@ public class UtilTest {
     public void GetUserById(){
         SqlSession sqlSession = MybatisUtils.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.findUserById(1002);
+        User user = mapper.findUserById();
         System.out.println(user);
         MybatisUtils.closeSession(sqlSession);
     }
