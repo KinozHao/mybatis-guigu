@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bom.mapper.ParameterMapper">
+    <select id="allUser" resultType="User2">
+        select *
+        from mybatisframe.user;
+    </select>
+    <!--获取参数的两种方式:#{}占位符赋值 ${}字符串拼接-->
+    <!--当为单个字面量类型,两种方式都可以,需注意${}单引号问题-->
+    <!--select * from mybatisframe.user where id = '${id}'-->
+    <select id="findUserById" resultType="User2">
+        select * from mybatisframe.user where id = #{id};
+    </select>
+</mapper>   
+    

@@ -3,24 +3,43 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="sql.properties"/>
+    <!--引入properties文件-->
+    <properties resource="jdbc.properties"/>
+    <!--设置类型别名:xml中resultType使用别名即可-->
     <typeAliases>
-        <package name="bcom.pojo.User"/>
+        <!--alias属性可有可无，默认为实体类类名，类型别名不区分大小写-->
+        <!--<typeAlias type="com.entity.User" alias="User"/>-->
+        <!--以包为单位,包下的所有类设置默认别名-->
+        <package name="bom.pojo"/>
     </typeAliases>
+    <!--配置连接数据库的环境-->
     <environments default="development">
         <environment id="development">
+            <!--事务管理器
+            type属性两种方式:
+                JDBC使用jdbc原生的事务管理器|
+                MANAGED被管理,如使用Spring-->
             <transactionManager type="JDBC"/>
-                <dataSource type="POOLED">
-                    <property name="driver" value="${jdbc.driver}"/>
-                    <property name="url" value="${jdbc.url}"/>
-                    <property name="username" value="${jdbc.username}"/>
-                    <property name="password" value="${jdbc.password}"/>
-                </dataSource>
+            <!--数据库连接池
+            type属性三种方式:
+                POOLED:使用数据库连接池
+                UNPOOLED:不使用数据库连接池
+                JNDI:表示使用上下文中的数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${cc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
         </environment>
     </environments>
-    
+    <!--引入映射文件-->
     <mappers>
-        <!--<package name="bcom.mapper"/>-->
-        <mapper resource="bcom/mapper/UserMapperII.xml"/>
+        <!--<mapper resource="bom/mapper/UserMapper2.xml"/>-->
+        <!--以包的形式引入mapper file
+        前提条件
+        mapper和mapper接口的包路径一样
+        mapper和mapper接口的名称一样-->
+        <package name="bom.mapper"/>
     </mappers>
 </configuration>

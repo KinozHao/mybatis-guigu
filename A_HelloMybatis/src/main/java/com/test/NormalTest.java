@@ -20,7 +20,7 @@ import java.io.InputStream;
 public class NormalTest {
     @SneakyThrows
     @Test
-    public void insertUser(){
+    public void fucTest(){
         //加载核心配置文件
         InputStream resource = Resources.getResourceAsStream("mybatis_config.xml");
         //获取SqlSessionFactoryBuilder
@@ -31,7 +31,7 @@ public class NormalTest {
         SqlSession sqlSession = factory.openSession(true);
         //获取mapper接口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        //测试CRUD功能
+        //测试CUD功能
         //mapper.insertUser();
         mapper.dropUser();
         //mapper.updateUser();

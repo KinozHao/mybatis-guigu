@@ -23,10 +23,4 @@ public interface UserMapper {
 
     //更新用户信息
     int updateUser();
-
-    //获取全部用户
-    List<User> allUser();
-
-    //根据id获取用户信息
-    User findUserById();
 }
