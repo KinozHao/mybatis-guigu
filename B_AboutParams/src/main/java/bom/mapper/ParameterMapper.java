@@ -1,8 +1,10 @@
 package bom.mapper;
 
-import bom.pojo.User2;
+import bom.pojo.B_user;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author kinoz
@@ -10,7 +12,13 @@ import java.util.List;
  * @apiNote
  */
 public interface ParameterMapper {
-    List<User2> allUser();
+    List<B_user> allUser();
 
-    User2 findUserById(int id);
+    B_user findUserById(int id);
+
+    B_user checkLoginIn(String username, String password);
+    B_user checkLoginInByMap(Map<String,Object> map);
+    B_user checkLoginInByParam(@Param("username") String username,@Param("password") String password);
+
+    int insertUser(B_user user);
 }
