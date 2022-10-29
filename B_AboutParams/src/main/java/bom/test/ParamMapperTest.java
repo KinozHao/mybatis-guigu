@@ -15,7 +15,7 @@ import java.util.List;
  * @Date 2022/10/11 22:47
  * @apiNote 测试Mybatis工具类
  */
-public class UtilTest {
+public class ParamMapperTest {
     @Test
     public void GetAllUser(){
         //1.通过工具类类获取SqlSession对象
@@ -52,15 +52,5 @@ public class UtilTest {
         //4.接口方法为实体类类型参数时
         //mapper.insertUser(new B_user(null, "queen", "143", 12, "女", "143@qq.com"));
 
-    }
-    @Test
-    public void tttt(){
-        //review equals()
-        String name = "hello";
-        if (name.equals(200)||name.equals("hello")){
-            System.out.println("hello");
-        }else {
-            System.out.println("out");
-        }
     }
 }

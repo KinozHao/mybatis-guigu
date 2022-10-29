@@ -12,8 +12,8 @@ import java.util.Map;
  * @apiNote
  */
 public interface ParameterMapper {
-    List<B_user> allUser();
 
+    List<B_user> allUser();
     B_user findUserById(int id);
 
     B_user checkLoginIn(String username, String password);
