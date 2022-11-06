@@ -16,4 +16,7 @@
     <select id="FindUserByIdMap" resultType="map">
         select * from mybatisframe.user where id = #{id};
     </select>
+    <select id="FindAllUserMap" resultType="map">
+        select * from mybatisframe.user;
+    </select>
 </mapper>
