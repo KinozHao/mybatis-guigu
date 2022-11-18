@@ -2,7 +2,7 @@ package bom.test;
 
 
 import bom.mapper.ParameterMapper;
-import bom.pojo.B_user;
+import bom.pojo.YongHu;
 import bom.util.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
@@ -23,11 +23,11 @@ public class ParamMapperTest {
         //2.通过反射获取mapper对象
         ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
         //3.使用mapper调用CRUD方法
-        List<B_user> users = mapper.allUser();
+        List<YongHu> users = mapper.allUser();
         //4.遍历数据
         users.forEach(user -> System.out.println(user));
 
-        B_user user = mapper.findUserById(1002);
+        YongHu user = mapper.findUserById(1002);
         System.out.println(user);
     }
     @Test
@@ -35,22 +35,22 @@ public class ParamMapperTest {
         SqlSession sqlSession = MybatisUtils.openSession(true);
         ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
         //1.多参数使用默认格式
-        B_user user1 = mapper.checkLoginIn("admin", "123456");
+        YongHu user1 = mapper.checkLoginIn("admin", "123456");
         System.out.println(user1);
 
         //2.多参数自定义Map集合
         HashMap<String, Object> data = new HashMap<>();
         data.put("username","admin");
         data.put("password","123456");
-        B_user user2 = mapper.checkLoginInByMap(data);
+        YongHu user2 = mapper.checkLoginInByMap(data);
         System.out.println(user2);
 
         //3.使用@Param注解(常用方式)
-        B_user user3 = mapper.checkLoginInByParam("queen", "143");
+        YongHu user3 = mapper.checkLoginInByParam("queen", "143");
         System.out.println(user3);
 
         //4.接口方法为实体类类型参数时
-        //mapper.insertUser(new B_user(null, "queen", "143", 12, "女", "143@qq.com"));
+        //mapper.insertUser(new YongHu(null, "queen", "143", 12, "女", "143@qq.com"));
 
     }
 }

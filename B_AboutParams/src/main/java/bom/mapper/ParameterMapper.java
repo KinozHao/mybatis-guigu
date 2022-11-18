@@ -1,6 +1,6 @@
 package bom.mapper;
 
-import bom.pojo.B_user;
+import bom.pojo.YongHu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,12 +13,16 @@ import java.util.Map;
  */
 public interface ParameterMapper {
 
-    List<B_user> allUser();
-    B_user findUserById(int id);
-
-    B_user checkLoginIn(String username, String password);
-    B_user checkLoginInByMap(Map<String,Object> map);
-    B_user checkLoginInByParam(@Param("username") String username,@Param("password") String password);
-
-    int insertUser(B_user user);
+    //获取全部用户
+    List<YongHu> allUser();
+    //根据id获取用户
+    YongHu findUserById(int id);
+    //登录认证
+    YongHu checkLoginIn(String username, String password);
+    //登录认证(使用Map)
+    YongHu checkLoginInByMap(Map<String,Object> map);
+    //登录认证(使用Param注解)
+    YongHu checkLoginInByParam(@Param("username") String username, @Param("password") String password);
+    //添加用户(通过一个实体类)
+    int insertUser(YongHu user);
 }

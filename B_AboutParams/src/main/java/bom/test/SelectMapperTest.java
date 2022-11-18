@@ -1,15 +1,13 @@
 package bom.test;
 
 import bom.mapper.SelectMapper;
-import bom.pojo.B_user;
+import bom.pojo.YongHu;
 import bom.util.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author kinoz
@@ -27,7 +25,7 @@ public class SelectMapperTest {
     public void TestGetAllUser(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
         SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
-        List<B_user> all = mapper.All();
+        List<YongHu> all = mapper.All();
         all.forEach(user -> System.out.println(user) );
     }
     @Test
