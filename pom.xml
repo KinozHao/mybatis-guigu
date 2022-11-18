@@ -11,6 +11,7 @@
     <modules>
         <module>A_HelloMybatis</module>
         <module>B_AboutParams</module>
+        <module>C_CusMapper</module>
     </modules>
 
     <properties>
@@ -27,7 +28,6 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.7</version>
         </dependency>
-
         <!--mysql连接-->
         <dependency>
             <groupId>mysql</groupId>
@@ -42,12 +42,6 @@
             <version>5.9.0</version>
         </dependency>
 
-        <!--lombok注解-->
-        <dependency>
-            <groupId>maven_repo.org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-        </dependency>
 
         <!--log4j日志-->
         <dependency>

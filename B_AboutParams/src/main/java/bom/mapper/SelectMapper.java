@@ -1,6 +1,6 @@
 package bom.mapper;
 
-import bom.pojo.B_user;
+import bom.pojo.YongHu;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,10 +14,10 @@ import java.util.Map;
  */
 public interface SelectMapper {
     //根据id查询
-    B_user FindUserById(@Param("id") Integer id);
+    YongHu FindUserById(@Param("id") Integer id);
 
     //查询所有用户信息
-    List<B_user> All();
+    List<YongHu> All();
 
     //有多少条数据
     Integer DataCount();

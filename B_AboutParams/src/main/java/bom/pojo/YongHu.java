@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Objects;
-
 /**
  * @author kinoz
  * @Date 2022/10/21 10:24
@@ -16,7 +14,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class B_user {
+public class YongHu {
     private Integer id;
     private String username;
     private String password;
