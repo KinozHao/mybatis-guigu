@@ -3,15 +3,12 @@ package bom.test;
 import bom.mapper.SQLMapper;
 import bom.pojo.YongHu;
 import bom.util.MybatisUtils;
-import lombok.SneakyThrows;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Map;
-=======
->>>>>>> origin/master
+
+
 
 /**
  * @author kinoz
@@ -33,20 +30,5 @@ public class SQLMapperTest {
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
         int i = mapper.DelMore("1055,1056");
     }
-<<<<<<< HEAD
-    @Test
-    public void TableName(){
-        SqlSession sqlSession = MybatisUtils.openSession(true);
-        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
-        List<YongHu> user = mapper.getUserByTableName("user");
-        user.forEach(data -> System.out.println(data));
-    }
-    @Test
-    public void insertTest(){
-        SqlSession sqlSession = MybatisUtils.openSession(true);
-        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
-        mapper.insertUser(new YongHu(null,"李伟", "leewei123", 32, "女", "leewei32432423@qq.com"));
-    }
-=======
->>>>>>> origin/master
+
 }
