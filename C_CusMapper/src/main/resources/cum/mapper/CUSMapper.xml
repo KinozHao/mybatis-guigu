@@ -2,10 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cum.mapper.SQLMapper">
+<mapper namespace="cum.mapper.CUSMapper">
         <select id="allEmpByTable" resultType="employee">
             select * from ${TableName}
         </select>
+
         <!--重点！！常用！！-->
         <!--当java属性和sql字段不同时,通过resultMa来设置自定义映射-->
         <resultMap id="for_allEmp" type="employee">

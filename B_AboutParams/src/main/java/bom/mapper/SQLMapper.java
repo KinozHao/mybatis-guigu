@@ -16,4 +16,10 @@ public interface SQLMapper {
 
     //批量删除操作
     int DelMore(@Param("ids")String ids);
+
+    //动态表名
+    List<YongHu> allUserByTable(@Param("tableName")String tableName);
+
+    //主键自增添加用户
+    int insertUser(YongHu yongHu);
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @Date 2022/11/19 16:14
  * @apiNote
  */
-public interface SQLMapper {
+public interface CUSMapper {
     //获取一张指定表的所有数据
     List<Object> allEmpByTable(@Param("TableName")String TableName);
 

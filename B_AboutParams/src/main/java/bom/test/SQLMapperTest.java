@@ -30,5 +30,18 @@ public class SQLMapperTest {
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
         int i = mapper.DelMore("1055,1056");
     }
-
+    @Test
+    public void Table(){
+        SqlSession sqlSession = MybatisUtils.openSession(true);
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        List<YongHu> user = mapper.allUserByTable("user");
+        user.forEach(data -> System.out.println(data));
+    }
+    @Test
+    public void AutoIncrease(){
+        SqlSession sqlSession = MybatisUtils.openSession(true);
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        YongHu yh = new YongHu(null, "可达鸭", "143", 13, "男", "143@qq.com");
+        mapper.insertUser(yh);
+    }
 }
