@@ -15,14 +15,4 @@
             <!--只能使用${},使用#{}会自动加单引号,不会报错但显示更新的数据为0条-->
             delete from mybatisframe.user where id in (${ids})
         </delete>
-
-        <select id="getUserByTableName" resultType="yongHu">
-            <!--同样不可使用#{},因为会自动加单引号-->
-            select *
-            from ${tableName};
-        </select>
-        <!--useGeneratedKeys代表使用主键自增 keyProperty自增后的数据赋给对应的字段-->
-        <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
-            insert into mybatisframe.user values (null,#{username},#{password},#{age},#{sex},#{email})
-        </insert>
 </mapper>

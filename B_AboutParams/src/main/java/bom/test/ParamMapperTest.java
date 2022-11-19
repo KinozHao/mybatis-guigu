@@ -50,7 +50,7 @@ public class ParamMapperTest {
         System.out.println(user3);
 
         //4.接口方法为实体类类型参数时
-        mapper.insertUser(new YongHu(null, "飞鹤", "143", 12, "男", "143@qq.com"));
+        //mapper.insertUser(new YongHu(null, "queen", "143", 12, "女", "143@qq.com"));
 
     }
 }
