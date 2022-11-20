@@ -6,6 +6,10 @@
     <!--引入properties文件-->
     <properties resource="db.properties"/>
     <!--设置类型别名:xml中resultType使用别名即可-->
+    <settings>
+        <!--将_自动映射为驼峰 使用较少-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <typeAliases>
         <!--alias属性可有可无，默认为实体类类名，类型别名不区分大小写-->
         <!--<typeAlias type="com.entity.User" alias="User"/>-->

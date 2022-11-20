@@ -19,5 +19,10 @@
         <select id="allEmp" resultMap="for_allEmp">
             select * from mybatisframe.employee;
         </select>
+
+        <!--使用字段别名-->
+        <select id="allEmpByAlias"  resultType="employee">
+            select e_id id,e_name name,age age,sex sex,email mail from mybatisframe.employee;
+        </select>
 </mapper>   
     

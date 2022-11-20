@@ -15,5 +15,10 @@ public interface CUSMapper {
     List<Object> allEmpByTable(@Param("TableName")String TableName);
 
     //获取所有员工数据
+
+    //使用字段别名
+    List<Employee> allEmpByAlias();
+
+    //使用resultMap
     List<Employee> allEmp();
 }
