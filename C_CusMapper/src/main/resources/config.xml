@@ -9,6 +9,8 @@
     <settings>
         <!--将_自动映射为驼峰 使用较少-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启延时加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
     <typeAliases>
         <!--alias属性可有可无，默认为实体类类名，类型别名不区分大小写-->

@@ -4,12 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cum.mapper.DeptMapper">
 
+    <!--处理一对多的映射关系-->
+    <!--1、使用collection标签-->
     <resultMap id="mapA" type="department">
-        <result property="d_id" column="d_id"/>
+        <id property="d_id" column="d_id"/>
         <result property="d_name" column="d_name"/>
+        <!--collection:处理一对多的映射关系-->
+        <!--ofType:表示该属性所对应集合中存储数据的类型-->
+        <collection property="emps" ofType="employee">
+            <id property="id" column="e_id"/>
+            <result property="name" column="e_name"/>
+            <result property="age" column="age"/>
+            <result property="sex" column="sex"/>
+            <result property="mail" column="email"/>
+        </collection>
     </resultMap>
-    <select id="getEmpAndDepByStep" resultMap="mapA">
+
+    <select id="getDepAndEmp" resultMap="mapA">
+        select * from department left join
+        employee e on department.d_id = e.d_id
+        where e.d_id = #{did}
+    </select>
+
+    <!--分布查询(员工为主)-->
+    <select id="getDept_A" resultMap="mapA">
         select * from department where d_id = #{id};
+    </select>
+    <!--分步查询(部门为主)-->
+    <resultMap id="mapB" type="department">
+        <id property="d_id" column="d_id"/>
+        <result property="d_name" column="d_name"/>
+        <collection property="emps" select="cum.mapper.EmpMapper.getEmp_B" column="d_id" fetchType="lazy"/>
+    </resultMap>
+    <select id="getDept_B" resultMap="mapB">
+        select * from department where d_id = #{did};
     </select>
 </mapper>   
     

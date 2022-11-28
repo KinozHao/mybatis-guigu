@@ -3,16 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cum.mapper.EmpMapper">
+        <!--获取一张指定表的所有数据-->
         <select id="allEmpByTable" resultType="employee">
             select * from ${TableName}
         </select>
 
-        <!--使用字段别名-->
+        <!--1、使用字段别名-->
         <select id="allEmpByAlias"  resultType="employee">
             select e_id id,e_name name,age age,sex sex,email mail from mybatisframe.employee;
         </select>
 
-        <!--重点！！常用！！-->
+        <!--2、使用resultMap 常用-->
         <!--当java属性和sql字段不同时,通过resultMap来设置自定义映射-->
         <resultMap id="for_allEmp" type="employee">
             <id property="id" column="e_id"/>
@@ -25,6 +26,8 @@
             select * from mybatisframe.employee;
         </select>
 
+
+        <!--++++++++++++++++++++++++++分割线+++++++++++++++++++++++++-->
         <!--处理多对一映射关系-->
         <!--1、通过级联方式-->
         <resultMap id="empAndDepCon" type="employee">
@@ -38,7 +41,6 @@
             <result property="dept.d_id" column="d_id"/>
             <result property="dept.d_name" column="d_name"/>
         </resultMap>
-
         <!--2、通过association标签-->
         <resultMap id="empAndDepAss" type="employee">
             <id property="id" column="e_id"/>
@@ -54,16 +56,16 @@
                 <id property="d_name" column="d_name"/>
             </association>
         </resultMap>
-
-        <!--级联查询SQL代码-->
-        <select id="getEmpAndDep" resultMap="empAndDepCon">
+        <!--级联查询SQL代码,其中resultMap可使用 1 or 2-->
+        <select id="getEmpAndDept" resultMap="empAndDepCon">
             select * from employee
             left join department
             on employee.d_id = department.d_id
             where employee.e_id = #{eid}
         </select>
+        <!--1和2结束-->
 
-        <!--3、分步查询-->
+        <!--3、分步查询(员工为主)-->
         <resultMap id="empAndDepStep" type="employee">
             <id property="id" column="e_id"/>
             <result property="name" column="e_name"/>
@@ -72,11 +74,17 @@
             <result property="mail" column="email"/>
             <!--select:设置分步查询的sql的唯一标识(namespace.sqlId或者mapper接口的全类名-->
             <!--column:设置分步查询的条件-->
-            <association property="dept" select="cum.mapper.DeptMapper.getEmpAndDepByStep" column="d_id"/>
+            <!--fetch:当开启了全局延迟加载后,可通过这个属性控制eager为不适用,lazy为使用懒加载-->
+            <association property="dept" select="cum.mapper.DeptMapper.getEmpAndDepByStep" column="d_id" fetchType="lazy"/>
         </resultMap>
-
-        <select id="getEmpAndDepByStep" resultMap="empAndDepStep">
+        <select id="getEmp_A" resultMap="empAndDepStep">
             select * from employee where e_id = #{eid}
+        </select>
+        <!--3结束-->
+
+        <!--分步查询(部门为主)-->
+        <select id="getEmp_B" resultMap="for_allEmp">
+            select * from employee where d_id = #{d_id}
         </select>
 </mapper>   
     

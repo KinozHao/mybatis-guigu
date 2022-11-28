@@ -12,11 +12,20 @@ import java.util.List;
 /**
  * @author kinoz
  * @Date 2022/11/19 16:17
- * @apiNote
+ * @apiNote 以员工数据为主表(多对一)
  */
-public class CUSMapperTest {
+public class MainEmpTest {
+
     @Test
-    public void allUser_resultMap(){
+    public void Emp_Alias(){
+        SqlSession sqlSession = MybatisUtils.openSession(true);
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        List<Employee> employees = mapper.allEmpByAlias();
+        employees.forEach(System.out::println);
+    }
+
+    @Test
+    public void Emp_resultMap(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         List<Employee> employees = mapper.allEmpByResultMap();
@@ -26,19 +35,14 @@ public class CUSMapperTest {
         }
     }
 
-    @Test
-    public void allUser_Alias(){
-        SqlSession sqlSession = MybatisUtils.openSession(true);
-        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
-        List<Employee> employees = mapper.allEmpByAlias();
-        employees.forEach(System.out::println);
-    }
 
     @Test
     public void empAndDep(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
-        Employee empAndDep = mapper.getEmpAndDepByStep(4);
-        System.out.println(empAndDep);
+        Employee empAndDep = mapper.getEmpAndDept(1002);
+        //只查询员工名称，若开启懒加载就只执行一条sql否则都会执行
+        System.out.println(empAndDep.getName());
+        System.out.println(empAndDep.getDept());
     }
 }

@@ -19,6 +19,7 @@ public class Employee {
     private Integer age;
     private String sex;
     private String mail;
+    //多对一
     private Department dept;
 
     @Override
