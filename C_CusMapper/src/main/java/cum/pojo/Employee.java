@@ -10,7 +10,6 @@ import lombok.ToString;
  * @Date 2022/11/19 16:15
  * @apiNote
  */
-@ToString
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +19,17 @@ public class Employee {
     private Integer age;
     private String sex;
     private String mail;
+    private Department dept;
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", mail='" + mail + '\'' +
+                ", dept=" + dept +
+                '}';
+    }
 }

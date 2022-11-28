@@ -1,6 +1,6 @@
 package cum.test;
 
-import cum.mapper.CUSMapper;
+import cum.mapper.EmpMapper;
 import cum.pojo.Employee;
 import cum.util.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -18,8 +18,8 @@ public class CUSMapperTest {
     @Test
     public void allUser_resultMap(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
-        CUSMapper mapper = sqlSession.getMapper(CUSMapper.class);
-        List<Employee> employees = mapper.allEmp();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        List<Employee> employees = mapper.allEmpByResultMap();
         Iterator<Employee> iterator = employees.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
@@ -29,8 +29,16 @@ public class CUSMapperTest {
     @Test
     public void allUser_Alias(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
-        CUSMapper mapper = sqlSession.getMapper(CUSMapper.class);
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         List<Employee> employees = mapper.allEmpByAlias();
         employees.forEach(System.out::println);
+    }
+
+    @Test
+    public void empAndDep(){
+        SqlSession sqlSession = MybatisUtils.openSession(true);
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Employee empAndDep = mapper.getEmpAndDepByStep(4);
+        System.out.println(empAndDep);
     }
 }
