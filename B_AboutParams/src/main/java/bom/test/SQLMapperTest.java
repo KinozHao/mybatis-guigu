@@ -41,7 +41,9 @@ public class SQLMapperTest {
     public void AutoIncrease(){
         SqlSession sqlSession = MybatisUtils.openSession(true);
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
-        YongHu yh = new YongHu(null, "可达鸭", "143", 13, "男", "143@qq.com");
-        mapper.insertUser(yh);
+        YongHu JNG = new YongHu(null, "杰尼龟", "12345", 13, "男", "143@qq.com");
+        YongHu PHL = new YongHu(null, "喷火龙", "123333", 13, "男", "123@qq.com");
+        mapper.insertUser(JNG);
+        mapper.insertUser(PHL);
     }
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cum.mapper.DynamicSQL">
+    <resultMap id="pojoToColumn" type="employee">
+        <id property="id" column="e_id"/>
+        <result property="name" column="e_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="mail" column="email"/>
+    </resultMap>
+    <!--1、当第一条数据为null时就会出现sql拼接错误,可以通过恒成立条件解决-->
+    <select id="getEmpByConditionOne" resultMap="pojoToColumn">
+        select * from employee where 1=1
+        <if test="name != null and name != ''">
+            <!--通过test中属性所对应的表达式决定标签中的内容是否需要拼接-->
+            e_name = #{name}
+        </if>
+        <if test="age != null and age != ''">
+            and age = #{age}
+        </if>
+        <if test="sex != null and sex != ''">
+            and sex = #{sex}
+        </if>
+        <if test="mail != null and mail != ''">
+            and email = #{mail}
+        </if>
+    </select>
+
+    <!--2、在if外嵌where标签(有内容才有效)
+    where标签中有内容就会自动生产where关键词
+    它会自动把内容前多余的and或or去掉(内容后的去不掉)-->
+    <select id="getEmpByConditionTwo" resultMap="pojoToColumn">
+        select * from employee
+        <where>
+            <if test="name != null and name != ''">
+                e_name = #{name}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="mail != null and mail != ''">
+                and email = #{mail}
+            </if>
+        </where>
+    </select>
+    <!--3、使用trim标签(有内容才有效)
+    prefix|suffix:将trim标签中内容前面或后面添加指定内容
+    prefixOverrides|suffixOverrides:将trim标签中内容前面或后面去掉指定内容-->
+    <select id="getEmpByCondition" resultMap="pojoToColumn">
+        select * from employee
+        <trim prefix="where" suffixOverrides="and|or">
+            <if test="name != null and name != ''">
+                e_name = #{name} and
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age} and
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex} or
+            </if>
+            <if test="mail != null and mail != ''">
+                email = #{mail}
+            </if>
+        </trim>
+    </select>
+
+    <!--4、使用choose when otherwise相当于java中 if if_else else-->
+    <select id="getEmpByChoose" resultMap="pojoToColumn">
+        select * from employee
+        <trim prefix="where" suffixOverrides="and|or">
+            <choose>
+                <when test="name != null and name != ''">
+                    e_name = #{name}
+                </when>
+                <when test="age != null and age != ''">
+                    age = #{age}
+                </when>
+                <otherwise>
+                    e_id = 2
+                </otherwise>
+            </choose>
+        </trim>
+    </select>
+</mapper>   
+    
