@@ -19,6 +19,9 @@ public class Employee {
     private Integer age;
     private String sex;
     private String mail;
+    //仅测试批量添加使用,因为需要字段和属性名称一样
+    private String e_name;
+    private String email;
     //多对一
     private Department dept;
 
@@ -32,5 +35,14 @@ public class Employee {
                 ", mail='" + mail + '\'' +
                 ", dept=" + dept +
                 '}';
+    }
+
+    public Employee(Integer id,String e_name, Integer age, String sex, String email, Department dept) {
+        this.id = id;
+        this.e_name = e_name;
+        this.age = age;
+        this.sex = sex;
+        this.email = email;
+        this.dept = dept;
     }
 }
