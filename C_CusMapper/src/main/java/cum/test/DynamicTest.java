@@ -40,6 +40,8 @@ public class DynamicTest {
         Employee employee2 = new Employee(null, "a1", 23, "男", "123@qq.com",null);
         Employee employee3 = new Employee(null, "a1", 23, "男", "123@qq.com",null);
         List<Employee> employees = Arrays.asList(employee1, employee2, employee3);
-        int i = mapperII.insertMoreByList(employees);
+       // int i = mapperII.insertMoreByList(employees);
+        //链式写法:获取所用用户信息 by sql标签
+        mapperII.allUser().forEach(System.out::println);
     }
 }

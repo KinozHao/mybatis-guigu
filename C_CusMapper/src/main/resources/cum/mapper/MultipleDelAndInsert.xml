@@ -32,5 +32,25 @@
             (null,#{emp.e_name},#{emp.age},#{emp.sex},#{emp.email},null)
         </foreach>
     </insert>
+
+    <!--sql片段(了解)
+    把常用的一段数据进行记录
+    用的时候直接通过include标签引用即可-->
+
+    <!--1、设置sql片段-->
+    <sql id="employee_db">
+        e_id,e_name,age,sex,email
+    </sql>
+    <resultMap id="emp_db" type="employee">
+        <id property="id" column="e_id"/>
+        <result property="name" column="e_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="mail" column="email"/>
+    </resultMap>
+    <select id="allUser" resultMap="emp_db">
+        <!--引用sql片段-->
+        select <include refid="employee_db"/> from employee;
+    </select>
 </mapper>
     
