@@ -14,7 +14,7 @@ import java.util.List;
  * 批量删除和添加:动态sql foreach的使用
  * 查询所有用户:sql标签使用
  */
-public interface MultipleDelAndInsert {
+public interface Multiple {
     //通过数据实现批量删除
     int deleteMoreByArray(@Param("eids") Integer[] eids);
 

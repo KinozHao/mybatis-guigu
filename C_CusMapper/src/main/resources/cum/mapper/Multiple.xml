@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cum.mapper.MultipleDelAndInsert">
+<mapper namespace="cum.mapper.Multiple">
     <!--foreach中标签的作用
     collection:设置需要循环的集合或数组
     item:集合或数组中的每一个数据
@@ -11,9 +11,6 @@
     <!--第一种当sql为in时候-->
     <!--<delete id="deleteMoreByArray">
         delete from employee where e_id in
-        /*item表示集合中的每一条数据
-          open以什么开始
-          close以什么结束*/
         <foreach collection="eids" item="eid" separator="," open="(" close=")">
             #{eid}
         </foreach>
