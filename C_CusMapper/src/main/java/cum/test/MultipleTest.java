@@ -22,11 +22,11 @@ public class MultipleTest {
 
     @Test
     public void Multiple_Insert(){
-        Employee employee1 = new Employee(null, "a1", 23, "男", "123@qq.com",null);
-        Employee employee2 = new Employee(null, "a1", 23, "男", "123@qq.com",null);
-        Employee employee3 = new Employee(null, "a1", 23, "男", "123@qq.com",null);
+        Employee employee1 = new Employee(null, "昭和", 23, "男", "123@qq.com","淮阴师范学院",null);
+        Employee employee2 = new Employee(null, "潘河", 24, "男", "5623@qq.com","淮阴师范学院",null);
+        Employee employee3 = new Employee(null, "京都", 13, "女", "167@qq.com","淮阴师范学院",null);
         List<Employee> employees = Arrays.asList(employee1, employee2, employee3);
-        int i = mapper.insertMoreByList(employees);
+        mapper.insertMoreByList(employees);
     }
     @Test
     public void Multiple_Delete(){

@@ -4,10 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cum.mapper.Multiple">
     <!--foreach中标签的作用
-    collection:设置需要循环的集合或数组
-    item:集合或数组中的每一个数据
-    separator:循环体之间的分隔符
-    open和close:以什么开始以什么结束-->
+    1、collection:设置需要循环的集合或数组
+    2、item:集合或数组中的每一个数据
+    3、separator:循环体之间的分隔符
+    4、open和close:以什么开始以什么结束-->
+
+
     <!--第一种当sql为in时候-->
     <!--<delete id="deleteMoreByArray">
         delete from employee where e_id in
@@ -15,6 +17,7 @@
             #{eid}
         </foreach>
     </delete>!-->
+
     <!--第二种当sql为or时候-->
     <delete id="deleteMoreByArray">
         delete from employee where
@@ -38,6 +41,8 @@
     <sql id="employee_db">
         e_id,e_name,age,sex,email
     </sql>
+
+    <!--自定义映射集-->
     <resultMap id="emp_db" type="employee">
         <id property="id" column="e_id"/>
         <result property="name" column="e_name"/>
@@ -45,6 +50,7 @@
         <result property="sex" column="sex"/>
         <result property="mail" column="email"/>
     </resultMap>
+
     <select id="allUser" resultMap="emp_db">
         <!--引用sql片段-->
         select <include refid="employee_db"/> from employee;

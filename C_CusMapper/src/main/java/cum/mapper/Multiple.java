@@ -15,7 +15,7 @@ import java.util.List;
  * 查询所有用户:sql标签使用
  */
 public interface Multiple {
-    //通过数据实现批量删除
+    //通过数组实现批量删除
     int deleteMoreByArray(@Param("eids") Integer[] eids);
 
     //通过list实现批量添加
