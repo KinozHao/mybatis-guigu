@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cum.mapper.Cache">
     <!--此标签用于开启二级缓存-->
-    <cache/>
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
     <select id="getEmpById" resultMap="cum.mapper.DynamicSQL.db">
         select * from mybatisframe.employee where e_id =#{eid};
     </select>

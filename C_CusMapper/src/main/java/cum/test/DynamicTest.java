@@ -22,7 +22,7 @@ public class DynamicTest {
 
     @Test
     public void by_Condition(){
-        List<Employee> data = mapper.getEmpByCondition(new Employee(null, "啊", 18, "男", "123@qq.com","淮阴师范学院",null));
+        List<Employee> data = mapper.getEmpByCondition(new Employee(null, "刘萌萌", 23, "女", "123@qq.com","淮阴师范学院",null));
         //List<Employee> data = mapper.getEmpByCondition(new Employee(null, null, 18, "男", "xxx@qq.com", null));
         //List<Employee> data = mapper.getEmpByCondition(new Employee(null, null, null, null,null,null));
         System.out.println(data);
@@ -30,7 +30,7 @@ public class DynamicTest {
 
     @Test
     public void by_Choose(){
-        Employee data = mapper.getEmpByChoose(new Employee(null, "李武", null, "男", "xxx@qq.com","淮阴师范学院",null));
+        Employee data = mapper.getEmpByChoose(new Employee(null, "京都散", null, "女", "xxx@qq.com","淮阴师范学院",null));
         System.out.println(data);
     }
 

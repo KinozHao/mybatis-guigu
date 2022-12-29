@@ -86,7 +86,7 @@
                     age = #{age}
                 </when>
                 <otherwise>
-                    e_id = 2
+                    e_id = 36
                 </otherwise>
             </choose>
         </trim>
