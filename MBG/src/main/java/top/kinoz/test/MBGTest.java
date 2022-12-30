@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 import top.kinoz.mapper.empMapper;
 import top.kinoz.pojo.emp;
+import top.kinoz.pojo.empExample;
 
 import java.util.List;
 
@@ -21,7 +22,18 @@ public class MBGTest {
         //获取SqlSession
         SqlSession sqlSession = MybatisUtils.openSession(true);
         empMapper mapper = sqlSession.getMapper(empMapper.class);
-        List<emp> emps = mapper.selectAll();
+
+        //查询所有数据
+        /*List<emp> emps = mapper.selectByExample(null);
+        emps.forEach(System.out::println);*/
+
+
+        //根据条件查询
+        empExample example = new empExample();
+        example.createCriteria().andCollageEqualTo("南京大学").andSexEqualTo("女").andAgeLessThan(20);
+        example.or().andCollageEqualTo("东南大学");
+        List<emp> emps = mapper.selectByExample(example);
         emps.forEach(System.out::println);
+
     }
 }
