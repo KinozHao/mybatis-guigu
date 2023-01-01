@@ -33,7 +33,10 @@ public class MBGTest {
         example.createCriteria().andCollageEqualTo("南京大学").andSexEqualTo("女").andAgeLessThan(20);
         example.or().andCollageEqualTo("东南大学");
         List<emp> emps = mapper.selectByExample(example);
-        emps.forEach(System.out::println);
+        //emps.forEach(System.out::println);
+
+        //根据id查询
+        System.out.println(mapper.selectByPrimaryKey(37));
 
     }
 }
