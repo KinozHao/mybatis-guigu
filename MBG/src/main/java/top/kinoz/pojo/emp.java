@@ -225,6 +225,19 @@ public class emp {
         this.collage = collage == null ? null : collage.trim();
     }
 
+    public emp(Integer eId, String eName, Integer age, String sex, String email, Integer dId, String collage) {
+        this.eId = eId;
+        this.eName = eName;
+        this.age = age;
+        this.sex = sex;
+        this.email = email;
+        this.dId = dId;
+        this.collage = collage;
+    }
+
+    public emp() {
+    }
+
     @Override
     public String toString() {
         return "emp{" +
