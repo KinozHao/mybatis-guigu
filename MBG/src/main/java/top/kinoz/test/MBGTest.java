@@ -39,7 +39,13 @@ public class MBGTest {
         //System.out.println(mapper.selectByPrimaryKey(37));
 
         //插入方法
-        mapper.insert(new emp(null,"杨丽",21,"女","yangli@qq.com",1002,"清华大学"));
+        //mapper.insert(new emp(null,"杨丽",21,"女","yangli@qq.com",1002,"清华大学"));
+
+        //对应条件有多少条数据
+        empExample example1 = new empExample();
+        example1.createCriteria().andSexEqualTo("女");
+        int i = mapper.countByExample(example1);
+        System.out.println(i);
 
     }
 }
