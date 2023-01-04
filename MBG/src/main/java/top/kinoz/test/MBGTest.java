@@ -45,7 +45,10 @@ public class MBGTest {
         empExample example1 = new empExample();
         example1.createCriteria().andSexEqualTo("女");
         int i = mapper.countByExample(example1);
-        System.out.println(i);
+        //System.out.println(i);
+
+
+        mapper.updateByPrimaryKey(new emp(38,"王敬畏",22,"男","chenhong@qq.com",1004,"盐城师范学院"));
 
     }
 }
