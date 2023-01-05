@@ -47,8 +47,11 @@ public class MBGTest {
         int i = mapper.countByExample(example1);
         //System.out.println(i);
 
+        //直接进行修改,若修改中有null此处直接改为null
+        //mapper.updateByPrimaryKey(new emp(38,"王敬畏",22,"男","chenhong@qq.com",1004,"盐城师范学院"));
 
-        mapper.updateByPrimaryKey(new emp(38,"王敬畏",22,"男","chenhong@qq.com",1004,"盐城师范学院"));
+        //若修改中属性存在null,此属性不会被修改
+        mapper.updateByPrimaryKeySelective(new emp(38,"王敬畏",23,null,"chenhong@qq.com",1004,"盐城师范学院"));
 
     }
 }
