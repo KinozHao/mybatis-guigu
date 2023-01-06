@@ -12,6 +12,10 @@
         <!--以包为单位,包下的所有类设置默认别名-->
         <package name="top.kinoz"/>
     </typeAliases>
+    
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
     <!--配置连接数据库的环境-->
     <environments default="development">
         <environment id="development">
