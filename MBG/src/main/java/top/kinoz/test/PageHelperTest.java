@@ -24,10 +24,10 @@ public class PageHelperTest {
         //代表开启分页插件,访问第一页,一页显示4条数据
         PageHelper.startPage(1,4);
         List<emp> emps = mapper.selectByExample(null);
-        //获取分页相关的数据
+        //获取分页相关的信息 emps表示分页数据，5表示导航分页的个数
         PageInfo<emp> info = new PageInfo<>(emps,5);
         System.out.println(info);
-        //emps.forEach(System.out::println);
+        emps.forEach(System.out::println);
 
         /*  info打印出来的信息
         * PageInfo{pageNum=2, pageSize=4, size=4, startRow=5, endRow=8, total=13, pages=4,
